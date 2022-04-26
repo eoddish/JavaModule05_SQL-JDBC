@@ -1,27 +1,23 @@
-package edu.school21.chat;
+package edu.school21.chat.models;
 
 import java.util.Date;
 
 public class Message {
-    private int id;
+    private long id;
     private User author;
     private Chatroom room;
     private String text;
     private Date date;
 
-    public Message(int id, User author, Chatroom room, String text, Date date) {
-        this.id = id;
-        this.author = author;
-        this.room = room;
-        this.text = text;
-        this.date = date;
+    public Message() {
+
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -61,10 +57,17 @@ public class Message {
     }
 
     public int hashCode() {
-        return id;
+        return (int)id;
     }
 
     public String toString() {
-        return "id: " + id + "date: " + date + ", author: " + author.getLogin() + ", room: " + room.getName() + ", text: " + text;
+        String result = "";
+        result += ("Message : {\n");
+        result += ("id=" + id + ",\n");
+        result += ("author=" + author);
+        result += ("room=" + room);
+        result += ("text=\"" + text + "\",\n");
+        result += ("dateTime=" + date + "\n}");
+        return result;
     }
 }
