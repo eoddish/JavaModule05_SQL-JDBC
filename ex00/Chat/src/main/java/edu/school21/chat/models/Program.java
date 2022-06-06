@@ -32,17 +32,10 @@ public class Program {
             Class.forName("org.postgresql.Driver");
             Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
             Statement statement = connection.createStatement();
-            String sql = readFile("target/classes/schema.sql");
+            String sql = readFile("ex00/Chat/src/main/resources/schema.sql");
             statement.executeUpdate(sql);
-            sql = readFile("../resources/data.sql");
+            sql = readFile("ex00/Chat/src/main/resources/data.sql");
             statement.executeUpdate(sql);
-
-           /* ResultSet resultSet = statement.executeQuery("SELECT * FROM USERS;");
-            while (resultSet.next()) {
-                User user = new User(rs.getInt("ID"), rs.getString("LOGIN"), rs.getString("PASSWORD"));
-            }
-
-            */
 
             statement.close();
             connection.close();
@@ -55,6 +48,5 @@ public class Program {
 
         postgres();
 
-        System.out.println("Done");
     }
 }
